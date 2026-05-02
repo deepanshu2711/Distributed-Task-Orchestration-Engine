@@ -1,5 +1,6 @@
 import { app } from "./app.js";
 
-app.listen(5090, () => {
-  console.log("api server running on port 5090");
+const PORT = process.env.PORT;
+app.listen(PORT, () => {
+  console.log(`API service running on port ${PORT}`);
 });
