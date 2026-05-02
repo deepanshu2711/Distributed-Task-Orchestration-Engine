@@ -12,6 +12,13 @@ services:
     image: redis:7-alpine
     ports: ["6379:6379"]
 
+  api-server:
+    build: ./src/services/api
+    depends_on: [postgres, redis]
+    environment:
+      DATABASE_URL: postgres://admin:secret@postgres:5432/taskengine
+      REDIS_URL: redis://redis:6379
+
   coordinator:
     build: ./src/services/orchestrator
     depends_on: [postgres, redis]
