@@ -19,6 +19,8 @@ services:
       DATABASE_URL: postgres://admin:secret@postgres:5432/taskengine
       REDIS_URL: redis://redis:6379
       PORT: 5090
+    ports:
+      - "5090:5090"
 
   coordinator:
     build: ./src/services/orchestrator
