@@ -40,6 +40,10 @@ async function relayOutbox() {
           entry.id,
         ]);
 
+        await client.query(`UPDATE tasks SET status = 'QUEUED' WHERE id = $1`, [
+          entry.task_id,
+        ]);
+
         console.log(`✅ Published entry ${entry.id}`);
       } catch (err) {
         console.error(`❌ Failed to process entry ${entry.id}`, err);
